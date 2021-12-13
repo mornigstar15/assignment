@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for mainoffering in main %}
+<ul>
+<li>{{ mainoffering.title }}
+<ul>
+  {% for offering in sub %}
+    {% if offering.parent_id == mainoffering %}
+        <li>{{ offering.title }}
+        <ul>
+  {% for offering2 in sub_sub %}
+    {% if offering2.parent_id == offering %}
+        <li>{{ offering2.title }}</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+</li>
+    {% endif %}
+  {% endfor %}
+</ul>
+</li>
+</ul>
+{% endfor %}
+{% endblock %}
